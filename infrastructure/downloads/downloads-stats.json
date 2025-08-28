@@ -1,0 +1,52 @@
+{
+  "daily_downloads": {
+    "2025-08-27": {
+      "1.0.0": {
+        "macos": 245,
+        "windows": 312,
+        "linux": 189
+      },
+      "1.1.0-beta.1": {
+        "macos": 45,
+        "windows": 52,
+        "linux": 38
+      }
+    },
+    "2025-08-26": {
+      "1.0.0": {
+        "macos": 231,
+        "windows": 298,
+        "linux": 176
+      },
+      "1.1.0-beta.1": {
+        "macos": 41,
+        "windows": 48,
+        "linux": 35
+      }
+    },
+    "2025-08-25": {
+      "1.0.0": {
+        "macos": 256,
+        "windows": 334,
+        "linux": 198
+      },
+      "1.1.0-beta.1": {
+        "macos": 38,
+        "windows": 44,
+        "linux": 32
+      }
+    }
+  },
+  "cumulative_downloads": {
+    "1.0.0": {
+      "macos": 12456,
+      "windows": 15678,
+      "linux": 8901
+    },
+    "1.1.0-beta.1": {
+      "macos": 245,
+      "windows": 312,
+      "linux": 189
+    }
+  }
+}

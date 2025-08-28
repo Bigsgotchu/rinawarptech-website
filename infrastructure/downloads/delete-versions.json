@@ -1,0 +1,68 @@
+{
+    "Objects": [
+        {
+            "Key": "beta/v1.1.0-beta.1/linux/RinaWarp-1.0.0.AppImage",
+            "VersionId": "iqHnxI5Z_3ZYC7HuGk4N0X4n2Z.ZLQk5"
+        },
+        {
+            "Key": "beta/v1.1.0-beta.1/linux/RinaWarp-beta.AppImage",
+            "VersionId": "srUL_mamnZFOR2aK5STNN1dKdKFfN9is"
+        },
+        {
+            "Key": "beta/v1.1.0-beta.1/macos/RinaWarp-1.0.0.dmg",
+            "VersionId": "25eLBKAGFqr2lMROCLCaj6BcYkBqIzmn"
+        },
+        {
+            "Key": "beta/v1.1.0-beta.1/macos/RinaWarp-beta.dmg",
+            "VersionId": "zcxrU3afkCw6Zo9r05Psvw.ouurrUqiZ"
+        },
+        {
+            "Key": "beta/v1.1.0-beta.1/windows/RinaWarp-1.0.0.exe",
+            "VersionId": "KMMvG6PeG9xVQoPh2A6tanuAxRd29HVp"
+        },
+        {
+            "Key": "beta/v1.1.0-beta.1/windows/RinaWarp-beta.exe",
+            "VersionId": "6EX5_J8InsOeor6v7hmyvmZnvovsctlX"
+        },
+        {
+            "Key": "manifest.json",
+            "VersionId": "Jzg9UN_WU80yAq.efPKqaxrcfJt01wVp"
+        },
+        {
+            "Key": "manifest.json",
+            "VersionId": "S0lJDgIzO3zEiFHCvqAPnsHWmVFG02A4"
+        },
+        {
+            "Key": "manifest.json",
+            "VersionId": "c1GfBf19Xy0443ovn5h4brSCGjQ79QzI"
+        },
+        {
+            "Key": "manifest.json",
+            "VersionId": "mCo5Yb2Wayk3i_6CXasc.1b3SYGc.u4A"
+        },
+        {
+            "Key": "v1.0.0/linux/RinaWarp.AppImage",
+            "VersionId": "zD.hSc4EMaIy9PZ_JFYOApHMjZ3d60xu"
+        },
+        {
+            "Key": "v1.0.0/linux/RinaWarp.AppImage",
+            "VersionId": "Wo5r38fOGQM.PH4hACcJsrLAL2O3e98a"
+        },
+        {
+            "Key": "v1.0.0/mac/RinaWarp.dmg",
+            "VersionId": "UZn7SrCe13SR4j6Cjj7GhX6EhfmzSD09"
+        },
+        {
+            "Key": "v1.0.0/macos/RinaWarp.dmg",
+            "VersionId": "WfOP4H29ELpzEBgRFKsltoQIDKxRPEYG"
+        },
+        {
+            "Key": "v1.0.0/windows/RinaWarp.exe",
+            "VersionId": "44L3O2pPLZNxVsBcy8r7.pdf8XUB0kF2"
+        },
+        {
+            "Key": "v1.0.0/windows/RinaWarp.exe",
+            "VersionId": "ZgvHFfmz0zI0b3tuSlSyS5Ka1M4rrSY."
+        }
+    ]
+}

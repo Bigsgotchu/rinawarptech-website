@@ -1,0 +1,67 @@
+{
+  "name": "rinawarp-terminal",
+  "version": "1.0.0",
+  "description": "RinaWarp Terminal - The World's First Terminal with FREE Ultra-Fast AI",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "jest",
+    "pack": "electron-builder --dir",
+    "dist:mac": "electron-builder build --mac",
+    "dist:win": "electron-builder build --win",
+    "dist:linux": "electron-builder build --linux",
+    "dist": "electron-builder build -mwl"
+  },
+  "build": {
+    "appId": "com.rinawarptech.terminal",
+    "productName": "RinaWarp",
+    "copyright": "Copyright © 2025 RinaWarp Technologies LLC",
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist",
+      "target": ["dmg"]
+    },
+    "dmg": {
+      "sign": false
+    },
+    "win": {
+      "target": ["nsis"],
+      "icon": "build/icon.ico"
+    },
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "category": "Development"
+    },
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "src/**/*",
+      "package.json"
+    ]
+  },
+  "keywords": [
+    "terminal",
+    "ai",
+    "development"
+  ],
+  "author": {
+    "name": "RinaWarp Technologies LLC",
+    "email": "support@rinawarptech.com"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "electron": "^28.1.0",
+    "electron-builder": "^24.9.1",
+    "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "@xterm/addon-fit": "^0.9.0",
+    "@xterm/xterm": "^5.4.0"
+  }
+}

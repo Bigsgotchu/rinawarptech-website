@@ -1,0 +1,129 @@
+{
+  "latest": "1.1.0",
+  "latest_beta": "1.1.0-beta.2",
+  "versions": {
+    "1.0.0": {
+      "release_date": "2025-08-27",
+      "release_notes": "Initial release of RinaWarp Terminal",
+      "critical": false,
+      "platforms": {
+        "macos": {
+          "version": "1.0.0",
+          "url": "https://downloads.rinawarptech.com/v1.0.0/macos/RinaWarp.dmg",
+          "checksum": "abc123",
+          "size": 1000000,
+          "min_os": "11.0.0",
+          "architecture": ["x86_64"]
+        },
+        "windows": {
+          "version": "1.0.0",
+          "url": "https://downloads.rinawarptech.com/v1.0.0/windows/RinaWarp.exe",
+          "checksum": "def456",
+          "size": 1500000,
+          "min_os": "10.0.0",
+          "architecture": ["x86_64"]
+        }
+      }
+    },
+    "1.1.0": {
+      "release_date": "2025-08-28",
+      "release_notes": "Major update with new features",
+      "critical": true,
+      "platforms": {
+        "macos": {
+          "version": "1.1.0",
+          "url": "https://downloads.rinawarptech.com/v1.1.0/macos/RinaWarp.dmg",
+          "checksum": "ghi789",
+          "size": 1200000,
+          "min_os": "11.0.0",
+          "architecture": ["x86_64", "arm64"]
+        },
+        "windows": {
+          "version": "1.1.0",
+          "url": "https://downloads.rinawarptech.com/v1.1.0/windows/RinaWarp.exe",
+          "checksum": "jkl012",
+          "size": 1600000,
+          "min_os": "10.0.0",
+          "architecture": ["x86_64"]
+        },
+        "linux": {
+          "version": "1.1.0",
+          "url": "https://downloads.rinawarptech.com/v1.1.0/linux/RinaWarp.AppImage",
+          "checksum": "mno345",
+          "size": 1400000,
+          "min_os": "Ubuntu 20.04",
+          "architecture": ["x86_64", "arm64"]
+        }
+      }
+    }
+  },
+  "beta": {
+    "1.1.0-beta.2": {
+      "release_date": "2025-08-28",
+      "release_notes": "Second beta release with improvements",
+      "critical": false,
+      "beta": true,
+      "expires": "2025-09-28",
+      "platforms": {
+        "macos": {
+          "version": "1.1.0-beta.2",
+          "url": "https://downloads.rinawarptech.com/beta/v1.1.0-beta.2/macos/RinaWarp.dmg",
+          "checksum": "xyz789",
+          "size": 1050000,
+          "min_os": "11.0.0",
+          "architecture": ["x86_64", "arm64"]
+        },
+        "windows": {
+          "version": "1.1.0-beta.2",
+          "url": "https://downloads.rinawarptech.com/beta/v1.1.0-beta.2/windows/RinaWarp.exe",
+          "checksum": "abc123",
+          "size": 1500000,
+          "min_os": "10.0.0",
+          "architecture": ["x86_64"]
+        },
+        "linux": {
+          "version": "1.1.0-beta.2",
+          "url": "https://downloads.rinawarptech.com/beta/v1.1.0-beta.2/linux/RinaWarp.AppImage",
+          "checksum": "def456",
+          "size": 1300000,
+          "min_os": "Ubuntu 20.04",
+          "architecture": ["x86_64", "arm64", "armv7"]
+        }
+      }
+    },
+    "1.1.0-beta.1": {
+      "release_date": "2025-08-27",
+      "release_notes": "Beta release with new features",
+      "critical": false,
+      "beta": true,
+      "expires": "2025-09-27",
+      "platforms": {
+        "macos": {
+          "version": "1.1.0-beta.1",
+          "url": "https://downloads.rinawarptech.com/beta/v1.1.0-beta.1/macos/RinaWarp.dmg",
+          "checksum": "pqr678",
+          "size": 1100000,
+          "min_os": "11.0.0",
+          "architecture": ["x86_64", "arm64"]
+        },
+        "windows": {
+          "version": "1.1.0-beta.1",
+          "url": "https://downloads.rinawarptech.com/beta/v1.1.0-beta.1/windows/RinaWarp.exe",
+          "checksum": "stu901",
+          "size": 1550000,
+          "min_os": "10.0.0",
+          "architecture": ["x86_64"]
+        },
+        "linux": {
+          "version": "1.1.0-beta.1",
+          "url": "https://downloads.rinawarptech.com/beta/v1.1.0-beta.1/linux/RinaWarp.AppImage",
+          "checksum": "vwx234",
+          "size": 1350000,
+          "min_os": "Ubuntu 20.04",
+          "architecture": ["x86_64", "arm64"]
+        }
+      }
+    }
+  },
+  "minimum_supported": "1.0.0"
+}

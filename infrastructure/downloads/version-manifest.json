@@ -1,0 +1,124 @@
+{
+  "latest": "1.0.0",
+  "latest_beta": "1.1.0-beta.1",
+  "pricing": {
+    "free": {
+      "monthly": 0,
+      "yearly": 0,
+      "features": [
+        "Basic terminal features",
+        "Community plugins",
+        "Standard themes"
+      ]
+    },
+    "pro": {
+      "monthly": 15,
+      "yearly": 144,
+      "features": [
+        "All Free features",
+        "Pro-only plugins",
+        "Custom themes",
+        "Priority support",
+        "Beta access"
+      ]
+    },
+    "business": {
+      "monthly": 55,
+      "yearly": 528,
+      "features": [
+        "All Pro features",
+        "Enterprise integrations",
+        "Advanced security",
+        "Team management",
+        "Custom branding",
+        "24/7 support"
+      ]
+    }
+  },
+  "versions": {
+    "1.0.0": {
+      "release_date": "2025-08-27",
+      "release_notes": "First stable release of RinaWarp Terminal",
+      "critical": false,
+      "beta": false,
+      "platforms": {
+        "macos": {
+          "version": "1.0.0",
+          "url": "https://downloads.rinawarptech.com/v1.0.0/macos/RinaWarp.dmg",
+          "checksum": "8a9462f4aa16a01c8900c5a421d0172a",
+          "size": 30,
+          "min_os": "11.0.0",
+          "architecture": [
+            "x86_64",
+            "arm64"
+          ]
+        },
+        "windows": {
+          "version": "1.0.0",
+          "url": "https://downloads.rinawarptech.com/v1.0.0/windows/RinaWarp.exe",
+          "checksum": "4d59cab4c1185d7ebe09eab019a04609",
+          "size": 32,
+          "min_os": "10.0.0",
+          "architecture": [
+            "x86_64"
+          ]
+        },
+        "linux": {
+          "version": "1.0.0",
+          "url": "https://downloads.rinawarptech.com/v1.0.0/linux/RinaWarp.AppImage",
+          "checksum": "67464da899ca522eb4683d41499039e2",
+          "size": 30,
+          "min_os": "Ubuntu 20.04",
+          "architecture": [
+            "x86_64",
+            "arm64"
+          ]
+        }
+      }
+    }
+  },
+  "minimum_supported": "1.0.0",
+  "beta": {
+    "1.1.0-beta.1": {
+      "release_date": "2025-08-27",
+      "release_notes": "Beta release with new features",
+      "critical": false,
+      "beta": true,
+      "platforms": {
+        "macos": {
+          "version": "1.1.0-beta.1",
+          "url": "https://downloads.rinawarptech.com/beta/v1.1.0-beta.1/macos/RinaWarp-beta.dmg",
+          "checksum": "03b5da85a229e88dfddb72f881ea5c9c",
+          "size": 30,
+          "min_os": "11.0.0",
+          "architecture": [
+            "x86_64",
+            "arm64"
+          ]
+        },
+        "windows": {
+          "version": "1.1.0-beta.1",
+          "url": "https://downloads.rinawarptech.com/beta/v1.1.0-beta.1/windows/RinaWarp-beta.exe",
+          "checksum": "d468ba92804679c7df1e80b063c3b1f0",
+          "size": 32,
+          "min_os": "10.0.0",
+          "architecture": [
+            "x86_64"
+          ]
+        },
+        "linux": {
+          "version": "1.1.0-beta.1",
+          "url": "https://downloads.rinawarptech.com/beta/v1.1.0-beta.1/linux/RinaWarp-beta.AppImage",
+          "checksum": "1e268cb72442d66e783c52785665686e",
+          "size": 30,
+          "min_os": "Ubuntu 20.04",
+          "architecture": [
+            "x86_64",
+            "arm64"
+          ]
+        }
+      },
+      "expires": "2025-09-30"
+    }
+  }
+}

@@ -1,0 +1,113 @@
+name: Release Pipeline
+
+on:
+  release:
+    types: [published]
+
+env:
+  AWS_REGION: us-east-1
+  S3_BUCKET: rinawarp-downloads-prod
+  CLOUDFRONT_DISTRIBUTION: E2GEA66HDSVJP7
+
+jobs:
+  upload-release:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+        aws-region: ${{ env.AWS_REGION }}
+
+    - name: Extract version info
+      id: version
+      run: |
+        echo "version=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+        IS_BETA=$(echo ${GITHUB_REF#refs/tags/} | grep -q "beta" && echo "true" || echo "false")
+        echo "is_beta=$IS_BETA" >> $GITHUB_OUTPUT
+
+    - name: Generate version manifest
+      id: manifest
+      run: |
+        VERSION=${{ steps.version.outputs.version }}
+        IS_BETA=${{ steps.version.outputs.is_beta }}
+        DATE=$(date +%Y-%m-%d)
+        
+        # Download existing manifest
+        aws s3 cp s3://${{ env.S3_BUCKET }}/manifest.json ./manifest.json || echo '{"latest":"","latest_beta":"","versions":{},"beta":{}}' > manifest.json
+        
+        # Update manifest
+        jq -r --arg v "$VERSION" \
+           --arg d "$DATE" \
+           --argjson b $IS_BETA \
+           --arg macos_url "https://downloads.rinawarptech.com/${IS_BETA:+beta/}$VERSION/macos/RinaWarp${IS_BETA:+-beta}.dmg" \
+           --arg win_url "https://downloads.rinawarptech.com/${IS_BETA:+beta/}$VERSION/windows/RinaWarp${IS_BETA:+-beta}.exe" \
+           --arg linux_url "https://downloads.rinawarptech.com/${IS_BETA:+beta/}$VERSION/linux/RinaWarp${IS_BETA:+-beta}.AppImage" \
+           '.versions[$v] = {
+              "release_date": $d,
+              "release_notes": "",
+              "critical": false,
+              "beta": $b,
+              "platforms": {
+                "macos": {
+                  "version": $v,
+                  "url": $macos_url,
+                  "size": 0,
+                  "min_os": "11.0.0",
+                  "architecture": ["x86_64", "arm64"]
+                },
+                "windows": {
+                  "version": $v,
+                  "url": $win_url,
+                  "size": 0,
+                  "min_os": "10.0.0",
+                  "architecture": ["x86_64"]
+                },
+                "linux": {
+                  "version": $v,
+                  "url": $linux_url,
+                  "size": 0,
+                  "min_os": "Ubuntu 20.04",
+                  "architecture": ["x86_64", "arm64"]
+                }
+              }
+            }' manifest.json > manifest.json.tmp
+        mv manifest.json.tmp manifest.json
+
+    - name: Upload release files
+      run: |
+        VERSION=${{ steps.version.outputs.version }}
+        IS_BETA=${{ steps.version.outputs.is_beta }}
+        BASE_PATH="${IS_BETA:+beta/}$VERSION"
+        
+        # Create platform directories
+        mkdir -p macos windows linux
+        
+        # Download artifacts from GitHub release
+        gh release download $VERSION \
+          --pattern "*.dmg" --dir macos \
+          --pattern "*.exe" --dir windows \
+          --pattern "*.AppImage" --dir linux
+        
+        # Upload to S3
+        aws s3 cp macos/ s3://${{ env.S3_BUCKET }}/$BASE_PATH/macos/ --recursive
+        aws s3 cp windows/ s3://${{ env.S3_BUCKET }}/$BASE_PATH/windows/ --recursive
+        aws s3 cp linux/ s3://${{ env.S3_BUCKET }}/$BASE_PATH/linux/ --recursive
+        
+        # Update manifest
+        aws s3 cp manifest.json s3://${{ env.S3_BUCKET }}/manifest.json
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Invalidate CloudFront cache
+      run: |
+        VERSION=${{ steps.version.outputs.version }}
+        aws cloudfront create-invalidation \
+          --distribution-id ${{ env.CLOUDFRONT_DISTRIBUTION }} \
+          --paths "/*${VERSION}*" "/manifest.json"

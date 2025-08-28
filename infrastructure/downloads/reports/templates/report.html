@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RinaWarp Release Report - {{ latest_version }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            min-height: 400px;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-900">RinaWarp Release Report</h1>
+            <p class="text-gray-600 mt-2">Generated on {{ generated_date }}</p>
+        </header>
+
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Version Information</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-blue-50 rounded-lg p-4">
+                    <h3 class="font-medium text-blue-900">Latest Version</h3>
+                    <p class="text-2xl font-bold text-blue-600">{{ latest_version }}</p>
+                </div>
+                {% if latest_beta %}
+                <div class="bg-yellow-50 rounded-lg p-4">
+                    <h3 class="font-medium text-yellow-900">Latest Beta</h3>
+                    <p class="text-2xl font-bold text-yellow-600">{{ latest_beta }}</p>
+                </div>
+                {% endif %}
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h3 class="font-medium text-gray-900">Minimum Supported</h3>
+                    <p class="text-2xl font-bold text-gray-600">{{ minimum_supported }}</p>
+                </div>
+            </div>
+        </div>
+
+        {% if has_stats %}
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Download Statistics</h2>
+            <div class="mb-4">
+                <h3 class="font-medium text-gray-900">Total Downloads</h3>
+                <p class="text-4xl font-bold text-green-600">{{ "{:,}".format(total_downloads) }}</p>
+            </div>
+            
+            <div class="chart-container">
+                {{ downloads_chart | safe }}
+            </div>
+            
+            <div class="chart-container">
+                {{ platform_chart | safe }}
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Available Versions</h2>
+            
+            <div class="space-y-6">
+                {% for version in versions %}
+                <div class="border-b pb-4 last:border-b-0">
+                    <h3 class="text-xl font-semibold text-gray-900">{{ version.version }}</h3>
+                    <div class="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="font-medium text-gray-700">Release Date</h4>
+                            <p class="text-gray-900">{{ version.release_date }}</p>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-700">Platforms</h4>
+                            <ul class="list-disc list-inside">
+                            {% for platform, details in version.platforms.items() %}
+                                <li>{{ platform }}: {{ details.architecture | join(", ") }}</li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                        {% if version.changelog %}
+                        <div class="md:col-span-2">
+                            <h4 class="font-medium text-gray-700">Changelog</h4>
+                            <ul class="list-disc list-inside text-gray-900">
+                            {% for change in version.changelog %}
+                                <li>{{ change }}</li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        {% if beta_versions %}
+        <div class="bg-white rounded-lg shadow-sm p-6">
+            <h2 class="text-2xl font-semibold mb-4">Beta Versions</h2>
+            
+            <div class="space-y-6">
+                {% for version in beta_versions %}
+                <div class="border-b pb-4 last:border-b-0">
+                    <h3 class="text-xl font-semibold text-yellow-600">{{ version.version }}</h3>
+                    <div class="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="font-medium text-gray-700">Release Date</h4>
+                            <p class="text-gray-900">{{ version.release_date }}</p>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-700">Platforms</h4>
+                            <ul class="list-disc list-inside">
+                            {% for platform, details in version.platforms.items() %}
+                                <li>{{ platform }}: {{ details.architecture | join(", ") }}</li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                        {% if version.changelog %}
+                        <div class="md:col-span-2">
+                            <h4 class="font-medium text-gray-700">Beta Changes</h4>
+                            <ul class="list-disc list-inside text-gray-900">
+                            {% for change in version.changelog %}
+                                <li>{{ change }}</li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

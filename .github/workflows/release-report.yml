@@ -1,0 +1,84 @@
+name: Generate Release Report
+
+on:
+  release:
+    types: [published, edited]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to generate report for (e.g., 1.2.3)'
+        required: false
+        type: string
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install jinja2 plotly
+
+      - name: Determine version
+        id: version
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "release" ]]; then
+            # Expect tags like v1.2.3 or 1.2.3
+            RAW_REF="${GITHUB_REF#refs/tags/}"
+            VERSION="${RAW_REF#v}"
+          else
+            VERSION="${{ github.event.inputs.version }}"
+            if [[ -z "$VERSION" ]]; then
+              # Fallback: read from manifest 'latest'
+              VERSION=$(jq -r .latest infrastructure/downloads/version-manifest.json)
+            fi
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Generate HTML report
+        working-directory: infrastructure/downloads/reports
+        shell: bash
+        run: |
+          set -euxo pipefail
+          OUT="release-${{ steps.version.outputs.version }}-report.html"
+          # Try to include stats if present
+          STATS_ARG=""
+          if [[ -f sample-stats.json ]]; then
+            STATS_ARG="--stats sample-stats.json"
+          elif [[ -f ../downloads-stats.json ]]; then
+            STATS_ARG="--stats ../downloads-stats.json"
+          fi
+          ./generate_report.py ../version-manifest.json $STATS_ARG --output "$OUT"
+          echo "REPORT_PATH=$(pwd)/$OUT" >> $GITHUB_ENV
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-report-${{ steps.version.outputs.version }}
+          path: ${{ env.REPORT_PATH }}
+          if-no-files-found: error
+
+      - name: Attach report to release
+        if: github.event_name == 'release'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          ASSET_NAME="release-report-${{ steps.version.outputs.version }}.html"
+          # Use GitHub CLI to upload (preinstalled on ubuntu-latest)
+          gh release upload "${GITHUB_REF#refs/tags/}" "$REPORT_PATH#${ASSET_NAME}" --clobber

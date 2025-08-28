@@ -1,0 +1,5 @@
+environment     = "prod"
+domain_name     = "rinawarptech.com"
+route53_zone_id = "Z0713202NJO49ZHK5ER1"
+project_name    = "rinawarp"
+slack_webhook_url = "https://hooks.slack.com/services/REPLACE_WITH_WEBHOOK_URL"

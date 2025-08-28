@@ -1,0 +1,20 @@
+[build]
+builder = "nixpacks"
+buildCommand = "npm install --legacy-peer-deps && npx prisma generate && npm run build"
+
+[deploy]
+startCommand = "npm start"
+healthcheckPath = "/"
+healthcheckTimeout = 100
+restartPolicyType = "on_failure"
+
+[build.env]
+NODE_ENV = "production"
+NODE_VERSION = "18.17.0"
+
+[deploy.env]
+NODE_ENV = "production"
+
+[deploy.domains]
+production = "rinawarptech.com"
+staging = "staging.rinawarptech.com"
