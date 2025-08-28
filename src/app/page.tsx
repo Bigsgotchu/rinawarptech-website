@@ -4,6 +4,7 @@ import { Features } from "../components/Features";
 import { Testimonials } from "../components/Testimonials";
 import { Pricing } from "../components/Pricing";
 import { FAQ } from "../components/FAQ";
+import { PricingComparison } from "../components/PricingComparison";
 import { Download } from "../components/Download";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
         <Features />
         <Testimonials />
         <Pricing />
+        <PricingComparison />
         <FAQ />
         <Download />
       </main>

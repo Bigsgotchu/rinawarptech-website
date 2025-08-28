@@ -9,7 +9,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "RinaWarp Terminal — The World's First Terminal with FREE Ultra-Fast AI",
-  description: "Get instant coding help with Groq Llama models. 10x faster than ChatGPT, completely free. Perfect for developers who live in the terminal.",
+  description: "Get instant coding help with GPT-5, Claude 4.1 & Gemini 2.5. Start free with 150 AI requests/month, upgrade from $12/mo. The perfect AI terminal for modern developers.",
   keywords: "terminal, AI, development, coding, Groq, ChatGPT alternative, developer tools"
 };
 
