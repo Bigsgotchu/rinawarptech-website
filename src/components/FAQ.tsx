@@ -8,7 +8,7 @@ interface FAQItem {
 const faqs: FAQItem[] = [
   {
     question: "What's included in the free plan?",
-    answer: "The free plan includes FREE Groq AI integration with 50 AI requests per day, basic terminal features, and 3 custom themes. It's perfect for trying out RinaWarp Terminal and experiencing the 10x faster AI responses."
+    answer: "The free plan includes access to GPT-5, Claude 4.1, & Gemini 2.5 with 150 AI requests per month, 3 indexed codebases (5,000 files each), basic terminal features, up to 3 custom themes, and community support. It's perfect for trying out RinaWarp Terminal."
   },
   {
     question: "How is it 10x faster than ChatGPT?",
@@ -24,11 +24,11 @@ const faqs: FAQItem[] = [
   },
   {
     question: "Can I upgrade or downgrade my plan anytime?",
-    answer: "Yes, you can upgrade or downgrade your plan at any time. Start with the free plan, and when you need more power, upgrade to Pro or Team plans for unlimited AI requests and additional features."
+    answer: "Yes, you can upgrade or downgrade your plan at any time. Start with the free plan, and when you need more power, upgrade to Pro ($12/mo), Turbo ($35/mo), or Business ($49/mo) plans. Save 20% with annual billing."
   },
   {
     question: "Do you offer technical support?",
-    answer: "Yes! Free plan users get community support, while Pro and Team plans include priority support. Team plan users also get dedicated support and an SLA guarantee."
+    answer: "Yes! Free plan users get community support. Pro plan users get private email support. Turbo users get priority support & training. Business plan users receive dedicated Slack support. Enterprise customers get a dedicated success manager."
   }
 ];
 

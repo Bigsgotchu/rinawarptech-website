@@ -32,7 +32,7 @@ async function createProducts() {
     const proMonthly = await stripe.prices.create({
       product: proPlan.id,
       currency: 'usd',
-      unit_amount: 1500, // $15.00
+      unit_amount: 1200, // $12.00
       recurring: {
         interval: 'month'
       },
@@ -44,7 +44,7 @@ async function createProducts() {
     const proYearly = await stripe.prices.create({
       product: proPlan.id,
       currency: 'usd',
-      unit_amount: 14400, // $144.00 ($12/mo with 20% discount)
+      unit_amount: 12000, // $120.00 ($10/mo with 20% discount)
       recurring: {
         interval: 'year'
       },
@@ -74,7 +74,7 @@ async function createProducts() {
     const turboMonthly = await stripe.prices.create({
       product: turboPlan.id,
       currency: 'usd',
-      unit_amount: 4000, // $40.00
+      unit_amount: 3500, // $35.00
       recurring: {
         interval: 'month'
       },
@@ -86,7 +86,7 @@ async function createProducts() {
     const turboYearly = await stripe.prices.create({
       product: turboPlan.id,
       currency: 'usd',
-      unit_amount: 38400, // $384.00 ($32/mo with 20% discount)
+      unit_amount: 33600, // $336.00 ($28/mo with 20% discount)
       recurring: {
         interval: 'year'
       },
@@ -116,7 +116,7 @@ async function createProducts() {
     const businessMonthly = await stripe.prices.create({
       product: businessPlan.id,
       currency: 'usd',
-      unit_amount: 5500, // $55.00
+      unit_amount: 4900, // $49.00
       recurring: {
         interval: 'month'
       },
@@ -128,7 +128,7 @@ async function createProducts() {
     const businessYearly = await stripe.prices.create({
       product: businessPlan.id,
       currency: 'usd',
-      unit_amount: 52800, // $528.00 ($44/mo with 20% discount)
+      unit_amount: 46800, // $468.00 ($39/mo with 20% discount)
       recurring: {
         interval: 'year'
       },

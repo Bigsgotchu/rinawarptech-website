@@ -46,9 +46,9 @@ const pricingPlans: PricingPlan[] = [
   {
     id: 'pro',
     name: 'Pro',
-    priceMonthly: 15,
-    priceYearlyPerMonth: 12, // billed yearly
-    yearlyTotal: 144,
+    priceMonthly: 12,
+    priceYearlyPerMonth: 10,
+    yearlyTotal: 120,
     description: 'For developers using AI to code, debug, and troubleshoot',
     features: [
       'Everything in Free, plus:',
@@ -66,9 +66,9 @@ const pricingPlans: PricingPlan[] = [
   {
     id: 'turbo',
     name: 'Turbo',
-    priceMonthly: 40,
-    priceYearlyPerMonth: 32,
-    yearlyTotal: 384,
+    priceMonthly: 35,
+    priceYearlyPerMonth: 28,
+    yearlyTotal: 336,
     description: 'For developers using AI as a daily productivity driver',
     features: [
       'Everything in Pro, plus:',
@@ -86,9 +86,9 @@ const pricingPlans: PricingPlan[] = [
   {
     id: 'business',
     name: 'Business',
-    priceMonthly: 55,
-    priceYearlyPerMonth: 44,
-    yearlyTotal: 528,
+    priceMonthly: 49,
+    priceYearlyPerMonth: 39,
+    yearlyTotal: 468,
     description: 'For teams scaling AI-powered development',
     features: [
       'Everything in Turbo, plus:',
